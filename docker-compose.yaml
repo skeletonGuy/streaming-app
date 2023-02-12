@@ -37,7 +37,7 @@ services:
       - DB_PASSWORD=mypassword
     depends_on:
       - db
-    command: npm start /src;
+    command: node ./src/src/app.js;
 
   # Database
   db:
