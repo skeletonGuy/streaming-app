@@ -28,6 +28,7 @@ services:
     image: node:latest
     volumes:
       - ./api:/app
+    working_dir: /app/src
     environment:
       - NODE_ENV=production
       - DB_HOST=db
