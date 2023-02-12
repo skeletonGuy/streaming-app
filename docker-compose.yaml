@@ -27,7 +27,8 @@ services:
   api:
     image: node:latest
     volumes:
-      - ./api:/src
+      - ./api:/app
+    working_dir: /app
     environment:
       - NODE_ENV=production
       - DB_HOST=db
@@ -37,7 +38,7 @@ services:
       - DB_PASSWORD=mypassword
     depends_on:
       - db
-    command: node ./src/src/app.js;
+    command: npm start
 
   # Database
   db:
