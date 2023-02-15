@@ -38,6 +38,8 @@ services:
       - DB_NAME=mydatabase
       - DB_USER=myuser
       - DB_PASSWORD=mypassword
+      - AUTH0_IDENTIFIER
+      - AUTH0_DOMAIN=
     depends_on:
       - db
     command: npm start
