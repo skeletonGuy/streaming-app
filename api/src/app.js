@@ -25,7 +25,7 @@ app.get('/api', (req, res) => {
   res.send('Hello, world!');
 });
 
-app.get('/api/key/:file', (req, res) => {
+app.get('/api/key/:file', checkJwt, (req, res) => {
   const file = req.params.file;
   const filePath = path.join('/keys', file);
 
