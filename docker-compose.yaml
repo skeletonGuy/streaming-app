@@ -38,8 +38,8 @@ services:
       - DB_NAME=mydatabase
       - DB_USER=myuser
       - DB_PASSWORD=mypassword
-      - AUTH0_IDENTIFIER="http://reiswig.rocks/api"
-      - AUTH0_DOMAIN="dev--fat69-n.auth0.com"
+      - AUTH0_IDENTIFIER=http://reiswig.rocks/api
+      - AUTH0_DOMAIN=dev--fat69-n.auth0.com
     depends_on:
       - db
     command: sh -c "npm install && npm start"
