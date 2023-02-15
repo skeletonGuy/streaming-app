@@ -4,11 +4,11 @@ const { auth, requiredScopes } = require('express-oauth2-jwt-bearer');
 
 const port = process.env.PORT || 3000;
 const authDomain = process.env.AUTH0_DOMAIN;
-const authIdentifier = process.env.AUTH0_IDENTIFIER; 
+const authIdentifier = process.env.AUTH0_IDENTIFIER;
 
 const checkJwt = auth({
-  audience:  authIdentifier,
-  issueBaseURL: `http;//${authDomain}`,
+  audience: authIdentifier,
+  issuerBaseURL: `http://${authDomain}`,
 });
 
 // Middleware
@@ -25,7 +25,7 @@ app.get('/api/key/:file', (req, res) => {
   const filePath = path.join('/keys', file);
 
   res.sendFile(filePath, (err) => {
-    if(err) {
+    if (err) {
       res.status(500).send('error serving file');
     }
   });
