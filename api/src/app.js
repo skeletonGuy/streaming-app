@@ -1,4 +1,5 @@
 const express = require('express');
+const cores = require('cors');
 const path = require('node:path');
 const app = express();
 const { auth, requiredScopes } = require('express-oauth2-jwt-bearer');
@@ -13,6 +14,9 @@ const checkJwt = auth({
 });
 
 // Middleware
+app.use(cors({
+  origin: '*'
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
