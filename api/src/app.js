@@ -11,6 +11,7 @@ const authIdentifier = process.env.AUTH0_IDENTIFIER;
 const checkJwt = auth({
   audience: authIdentifier,
   issuerBaseURL: `https://${authDomain}`,
+  tokenSigningAlg: 'RS256',
 });
 
 // Middleware
