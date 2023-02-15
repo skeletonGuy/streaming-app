@@ -8,11 +8,17 @@ const port = process.env.PORT || 3000;
 const authDomain = process.env.AUTH0_DOMAIN;
 const authIdentifier = process.env.AUTH0_IDENTIFIER;
 
-const checkJwt = auth({
+const authOptions = {
   audience: authIdentifier,
-  issuerBaseURL: `https://${authDomain}`,
+  issuerBaseURL: `https://${authDomain}/`,
   tokenSigningAlg: 'RS256',
-});
+};
+
+console.log('audience', authOptions.audience);
+console.log('issuerBaseURL', authOptions.issuerBaseURL);
+console.log('tokenSigningAlg', authOptions.tokenSigningAlg);
+
+const checkJwt = auth(authOptions);
 
 // Middleware
 app.use(cors({
