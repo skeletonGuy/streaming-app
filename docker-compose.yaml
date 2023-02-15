@@ -22,12 +22,14 @@ services:
       - "1935:1935"
     volumes:
       - ./nginx-rtmp/nginx.conf:/etc/nginx/nginx.conf:ro
+      - keys:/keys
 
   # API
   api:
     image: node:latest
     volumes:
       - ./api:/app
+      - keys:/keys
     working_dir: /app
     environment:
       - NODE_ENV=production
@@ -57,4 +59,7 @@ services:
   #    - ./react-app:/app
   #  environment:
   #    - REACT_APP_API_URL=http://api:3000
+
+volumes:
+  keys:
   
