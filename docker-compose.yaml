@@ -42,7 +42,7 @@ services:
       - AUTH0_DOMAIN=
     depends_on:
       - db
-    command: npm start
+    command: sh -c "npm install && npm start"
 
   # Database
   db:
@@ -64,4 +64,3 @@ services:
 
 volumes:
   keys:
-  
