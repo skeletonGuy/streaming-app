@@ -10,7 +10,7 @@ const authIdentifier = process.env.AUTH0_IDENTIFIER;
 
 const checkJwt = auth({
   audience: authIdentifier,
-  issuerBaseURL: `http://${authDomain}`,
+  issuerBaseURL: `https://${authDomain}`,
 });
 
 // Middleware
