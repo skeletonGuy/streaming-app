@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('node:path');
 const app = express();
 const { auth, requiredScopes } = require('express-oauth2-jwt-bearer');
 
