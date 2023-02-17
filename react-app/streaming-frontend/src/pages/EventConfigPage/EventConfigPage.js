@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useAuth0 } from '@auth0/auth0-react';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import { v4 as uuidv4 } from 'uuid';
@@ -10,6 +11,8 @@ import Player from '../../components/Player/Player';
 export default function EventConfigPage() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [streamKey, setStreamKey] = useState(uuidv4());
+  const [accessToken, setAccessToken] = useState(null);
+  const { getAccessTokenSilently } = useAuth0();
   const playerRef = React.useRef(null);
   const params = useParams();
   const streamApp = params.access === 'public' ? 'public' : 'private';
@@ -24,6 +27,14 @@ export default function EventConfigPage() {
     }]
   }
 
+  useEffect(() => {
+    const initAccessToken = async () => {
+      setAccessToken(await getAccessTokenSilently());
+    }
+
+    initAccessToken();
+  }, [getAccessTokenSilently]);
+
   const handlePlayerReady = (player) => {
     playerRef.current = player;
 
@@ -35,6 +46,17 @@ export default function EventConfigPage() {
     player.on('dispose', () => {
       console.log('player will dispose');
     });
+
+    player.tech().vhs.xhr.beforeRequest = function (options) {
+      //const keyRegex = /key\/.{38,}\.key/;
+      if (!options.headers) {
+        options.headers = {};
+      }
+
+      //if (options.uri.match(keyRegex)) {
+      options.headers['authorization'] = `Bearer ${accessToken}`;
+      //}
+    }
   };
 
 
