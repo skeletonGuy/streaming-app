@@ -17,7 +17,8 @@ services:
 
   # Nginx with rtmp ingest
   nginx-rtmp:
-    image: tiangolo/nginx-rtmp:latest
+    build:
+      context: ./nginx-rtmp
     ports:
       - "1935:1935"
     volumes:
