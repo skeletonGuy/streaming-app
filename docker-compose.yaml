@@ -16,25 +16,13 @@ services:
       #- react-app
 
   # Nginx with rtmp ingest
-  #nginx-rtmp:
-  #  image: tiangolo/nginx-rtmp:latest
-  #  ports:
-  #    - "1935:1935"
-  #  volumes:
-  #    - ./nginx-rtmp/nginx.conf:/etc/nginx/nginx.conf:ro
-  #    - keys:/keys
-
-  #mist
-  mist:
-    image: r0gger/mistserver
+  nginx-rtmp:
+    image: tiangolo/nginx-rtmp:latest
     ports:
       - "1935:1935"
-      - "4242:4242"
-      - "554:554"
-      - "8080:8080"
     volumes:
-      -keys:/keys
-
+      - ./nginx-rtmp/nginx.conf:/etc/nginx/nginx.conf:ro
+      - keys:/keys
 
   # API
   api:
