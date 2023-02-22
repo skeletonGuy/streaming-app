@@ -4,7 +4,7 @@ const path = require('node:path');
 const app = express();
 const { auth, requiredScopes } = require('express-oauth2-jwt-bearer');
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3333;
 const authDomain = process.env.AUTH0_DOMAIN;
 const authIdentifier = process.env.AUTH0_IDENTIFIER;
 
