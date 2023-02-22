@@ -13,7 +13,6 @@ services:
     depends_on:
       - nginx-rtmp
       - api
-      - react-app
 
   # Nginx with rtmp ingest
   nginx-rtmp:
@@ -56,12 +55,12 @@ services:
       - POSTGRES_PASSWORD=mypassword
 
   # React application
-  react-app:
-    image: node:latest
-    volumes:
-      - ./react-app:/app
-    environment:
-      - REACT_APP_API_URL=http://api:3333
+  ##react-app:
+  ##  image: node:latest
+  ##  volumes:
+  ##    - ./react-app:/app
+  ##  environment:
+  ##    - REACT_APP_API_URL=http://api:3333
 
 volumes:
   keys:

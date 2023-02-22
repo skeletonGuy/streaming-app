@@ -34,7 +34,7 @@ export default function MenuAppBar() {
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Stream shit
+            Stream stuff
           </Typography>
           {isAuthenticated && (
             <div>
